@@ -1,0 +1,38 @@
+---
+import Head from '../components/Head.astro';
+import Header from '../components/Header.astro';
+import Menu from '../components/Menu.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/main.sass';
+import ProductDetails from '../components/ProductDetails.astro';
+
+const { lang, title, description } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang={lang || 'pt-BR'} data-theme="light" data-contrast="light">
+	<Head title={title} description={description} lang={lang} />
+	<body>
+		<Header />
+		<Menu />
+		<div class="store-app" id="smooth-wrapper">
+			<div class="store-content" id="smooth-content">
+				<main>
+					<slot />
+					<Footer />
+				</main>
+			</div>
+		</div>
+		<ProductDetails
+			title="Funkalicious button"
+			sub1="Arte por"
+			sub2="Fen"
+			delPrice="36,00"
+			price="27,45"
+			installmentsNumber="2"
+			installmentsValue="13,72"
+		/>
+		<script type="module" is:client src="/src/scripts/smooth-scroll.js"></script>
+		<script type="module" is:client src="/src/scripts/scripts.js"></script>
+	</body>
+</html>

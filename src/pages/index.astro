@@ -1,0 +1,239 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Banner from '../components/Banner.astro';
+import ProductCard from '../components/ProductCard.astro';
+import Placard from '../components/Placard.astro';
+---
+
+<BaseLayout title="Página Inicial" description="Bem-vindo ao meu site!">
+
+	<Placard
+		phrase1="10% off com o cupom <b>BOASVINDAS</b> para sua primeira compra"
+	/>
+
+	<div class="banner-container full">
+		<Banner
+			href="#"
+			showTitle={true}
+			title= "Novas estampas, muita energia"
+			src="/img/banners/banner_brand.jpg"
+			alt="Banner da marca"
+			contrast="light"
+			gradient="true"
+		/>
+	</div>
+
+	<div class="banner-container half">
+		<Banner
+			showTitle={true}
+			title= "Os mais vendidos"
+			src="/img/banners/mais-vendidos.jpg"
+			alt="Banner da marca"
+			contrast="light"
+			gradient="true"
+			order="1"
+		/>
+		<Banner
+			showTitle={true}
+			title= "Gatification!"
+			src="/img/banners/gatification.png"
+			alt="Banner cats"
+			contrast="light"
+			gradient="true"
+			order="2"
+		/>
+	</div>
+
+	<div class="banner-container product-highlight">
+		<Banner
+			showTitle={true}
+			title= "Jaquetas"
+			src="/img/banners/jaquetas.jpg"
+			alt="Jaquetas em destaque"
+			contrast="dark"
+			gradient="false"
+			order="2"
+		/>
+		<ProductCard
+			title="Never Better Corta Vento"
+			src="/img/products/corta-vento.jpg"
+			price="339,95"
+			installmentsNumber="10"
+			installmentsValue="33,99"
+			order="1"
+		/>
+	</div>
+
+	<div class="banner-container product-highlight">
+		<Banner
+			showTitle={true}
+			title= "Leggings"
+			src="/img/banners/leggings.jpg"
+			alt="Leggings em destaque"
+			contrast="light"
+			gradient="true"
+			order="1"
+		/>
+		<ProductCard
+			title="Retro Surf Sunset Bottoms"
+			src="/img/products/retro-surf.jpg"
+			price="229,89"
+			installmentsNumber="10"
+			installmentsValue="22,98"
+			order="2"
+		/>
+	</div>
+
+	<div class="banner-container product-highlight">
+		<Banner
+			showTitle={true}
+			title= "Baby looks"
+			src="/img/banners/baby-looks.jpg"
+			alt="Baby looks em destaque"
+			contrast="light"
+			gradient="true"
+			order="2"
+		/>
+		<ProductCard
+			title="Frankie Goes To Hollywood baby look"
+			src="/img/products/frankie.jpg"
+			price="98,90"
+			installmentsNumber="10"
+			installmentsValue="9,89"
+			order="1"
+		/>
+	</div>
+
+	<!-- Showcase de produtos -->
+	<section class="showcase">
+		<hgroup>
+			<a href="#" title="Masculino - Manga longa">
+				<h2>Masculino - Manga longa</h2>
+				<i></i>
+			</a>
+		</hgroup>
+		<div class="cards-container">
+			<ProductCard
+				title="Catana"
+				src="/img/products/catana.jpg"
+				price="179,80"
+				installmentsNumber="10"
+				installmentsValue="17,98"
+				order="1"
+			/>
+			<ProductCard
+				title="Ghost of Disapproval"
+				src="/img/products/ghost.jpg"
+				price="179,80"
+				installmentsNumber="10"
+				installmentsValue="17,98"
+				order="2"
+			/>
+			<ProductCard
+				title="The Beauty Of Imperfection"
+				src="/img/products/imperfection.jpg"
+				price="179,80"
+				installmentsNumber="10"
+				installmentsValue="17,98"
+				order="3"
+			/>
+			<ProductCard
+				title="The Black Sushi Dragon"
+				src="/img/products/sushi.jpg"
+				price="179,80"
+				installmentsNumber="10"
+				installmentsValue="17,98"
+				order="4"
+			/>
+		</div>
+	</section>
+
+	<!-- Showcase de produtos -->
+	<section class="showcase">
+		<hgroup>
+			<a href="#" title="Feminino - Gola V">
+				<h2>Feminino - Gola V</h2>
+				<i></i>
+			</a>
+		</hgroup>
+		<div class="cards-container">
+			<ProductCard
+				title="Still Carring gola V"
+				src="/img/products/carring.jpg"
+				price="89,00"
+				installmentsNumber="10"
+				installmentsValue="8,90"
+				order="1"
+			/>
+			<ProductCard
+				title="Scribble Crow gola V"
+				src="/img/products/crow.jpg"
+				price="89,00"
+				installmentsNumber="10"
+				installmentsValue="8,90"
+				order="2"
+			/>
+			<ProductCard
+				title="Sunset Fusion gola V"
+				src="/img/products/sunset.jpg"
+				price="89,00"
+				installmentsNumber="10"
+				installmentsValue="8,90"
+				order="3"
+			/>
+			<ProductCard
+				title="Cat Tree gola V"
+				src="/img/products/cat-tree.jpg"
+				price="89,00"
+				installmentsNumber="10"
+				installmentsValue="8,90"
+				order="4"
+			/>
+		</div>
+	</section>
+
+	<!-- Showcase de produtos -->
+	<section class="showcase">
+		<hgroup>
+			<a href="#" title="Bags - Bags de cordão">
+				<h2>Bags - Bags de cordão</h2>
+				<i></i>
+			</a>
+		</hgroup>
+		<div class="cards-container">
+			<ProductCard
+				title="Garden"
+				src="/img/products/garden.jpg"
+				price="65,90"
+				installmentsNumber="10"
+				installmentsValue="6,59"
+				order="1"
+			/>
+			<ProductCard
+				title="Suspicious Meow"
+				src="/img/products/meow.jpg"
+				price="65,90"
+				installmentsNumber="10"
+				installmentsValue="6,59"
+				order="2"
+			/>
+			<ProductCard
+				title="Among Trees"
+				src="/img/products/among.jpg"
+				price="65,90"
+				installmentsNumber="10"
+				installmentsValue="6,59"
+				order="3"
+			/>
+			<ProductCard
+				title="Om nom nom"
+				src="/img/products/om.jpg"
+				price="65,90"
+				installmentsNumber="10"
+				installmentsValue="6,59"
+				order="4"
+			/>
+		</div>
+	</section>
+
+</BaseLayout>

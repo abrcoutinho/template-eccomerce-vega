@@ -1,0 +1,710 @@
+@use "variables" as *
+@use "base"
+
+.product-details
+	width: 90vw
+	max-width: calc($main_column - 2.5rem)
+	height: 85dvh
+	position: fixed
+	top: 50%
+	left: 50%
+	z-index: 20
+	transform: translate(-50%, -50%)
+	opacity: 0
+	visibility: hidden
+
+	&.active
+		opacity: 1
+		visibility: visible
+
+	// background mask
+	&::before
+		content: ''
+		width: 100vw
+		height: 100dvh
+		background-color: rgba(0, 0, 0, 0.4)
+		position: absolute
+		top: 50%
+		left: 50%
+		transform: translate(-50%, -50%)
+		z-index: -1
+
+	& > div
+		height: 100%
+		display: flex
+		gap: .25rem
+		z-index: 1
+		background-color: var(--bg-lightgrey)
+		border-radius: 1.25rem
+		box-sizing: border-box
+		padding: .75rem
+
+	aside
+		height: 100%
+		flex: 1
+		border-radius: .75rem
+		box-sizing: border-box
+		overflow-y: auto
+		display: flex
+		flex-flow: column
+		gap: .25rem
+
+		// Gallery
+		.img-gallery
+			width: 100%
+			position: relative
+
+			ul
+				width: 100%
+				background-color: var(--bg-lightgrey)
+				box-sizing: border-box
+				display: flex
+				gap: .25rem
+				flex-wrap: wrap
+				border-radius: .75rem
+				overflow: hidden
+				max-height: 25rem
+
+				li
+					flex: 1 1 49%
+					height: clamp(14rem, 25vw, 20rem)
+					background-color: lightgrey
+					border-radius: .75rem
+					overflow: hidden
+					position: relative
+
+					&::after
+						content: ''
+						width: 2rem
+						height: 2rem
+						border-radius: .5rem
+						background: url("/img/icons/full.svg") no-repeat center rgba(white, .8)
+							size: 1.5rem auto
+						position: absolute
+						top: 1rem
+						left: 1rem
+						z-index: 1
+						cursor: pointer
+						opacity: 0
+						transition: opacity .2s
+
+					&:hover::after
+						opacity: 1
+
+				img
+					width: 100%
+					height: 100%
+					object-fit: cover
+					object-position: center
+					cursor: pointer
+
+
+			.gallery-expand-bt
+				width: 3.5rem
+				height: 1.25rem
+				border-radius: 1.25rem
+				background-color: $theme
+				position: absolute
+				bottom: -.6rem
+				left: 50%
+				transform: translateX(-50%)
+				display: flex
+				align-items: center
+				justify-content: center
+				border: 0
+				cursor: pointer
+				&:hover
+					transform: translateX(-50%) scale(1.05)
+				i
+					flex: 0 0 1rem
+					height: 1rem
+					background-color: var(--contrast)
+					mask-image: url("/img/icons/arrow.svg")
+					mask-size: contain
+					transform: rotate(90deg)
+			
+
+
+		// Accordions
+		dl
+			flex: 1
+			border-radius: .75rem
+			background-color: var(--neutral_0)
+			padding: 2.5rem 2.5rem 5rem
+
+			dt
+				height: 3.5rem
+				display: flex
+				align-items: center
+				justify-content: space-between
+				padding-left: .75rem
+				font-size: 1.2rem
+				font-weight: 700
+				overflow: hidden
+				text-overflow: ellipsis
+				white-space: nowrap
+				border-bottom: solid 1px rgba(lightgrey, .5)
+				cursor: pointer
+
+				&:hover
+					opacity: .7
+
+				i
+					flex: 0 0 1rem
+					height: 1rem
+					background-color: var(--text-color)
+					mask-image: url("/img/icons/arrow.svg")
+					mask-size: contain
+					transform: rotate(90deg)
+
+			dd
+				max-height: 0
+				overflow: hidden
+
+
+	form
+		height: 100%
+		flex: 0 0 41%
+		background-color: var(--neutral_0)
+		border-radius: .75rem
+		box-sizing: border-box
+		padding: 1.25rem 2.5rem
+		position: relative
+		overflow-x: hidden
+		overflow-y: auto
+		box-shadow: .25rem 0 .5rem rgba(0, 0, 0, .1)
+
+		&::after
+			@extend %triangle
+			border-width: 1.2rem 1.2rem 0 0
+
+		& > header
+			display: flex
+			align-items: center
+			justify-content: space-between
+
+			.share-bt
+				flex: 0 0 4.5rem
+				height: 2.5rem
+				background-color: rgba(lightgrey, .3)
+				border-radius: .5rem
+				display: flex
+				align-items: center
+				justify-content: center
+				border: 0
+				cursor: pointer
+
+				&:hover
+					background-color: rgba(lightgrey, .5)
+
+				i
+					flex: 0 0 1.25rem
+					height: 1.25rem
+					background-color: var(--text-color)
+					mask-image: url("/img/icons/share.svg")
+					mask-size: contain
+			small
+				display: flex
+				align-items: center
+				gap: .25rem
+				border: 0
+				font-size: .8rem
+				font-weight: 800
+				i
+					flex: 0 0 1.25rem
+					height: 1.25rem
+					background-color: rgba(lightgrey, 1)
+					mask-image: url("/img/icons/star.svg")
+					mask-size: contain
+
+		.infos
+			h3
+				padding: 1.25rem 0
+				font-size: 2.25rem
+				line-height: 2.5rem
+				font-weight: 300
+			h4
+				font-size: 1rem
+				line-height: 1.25rem
+				font-weight: 600
+				margin-bottom: 1.5rem
+
+				em
+					font-weight: 900
+				span
+					margin-left: 1.8rem
+					i
+						width: 2rem
+						height: 1.25rem
+						position: relative
+
+						&::before
+							content: ''
+							width: 1rem
+							height: .25rem
+							border-radius: 1rem
+							background-color: rgba(lightgrey, .7)
+							position: absolute
+							left: -1.5rem
+							top: 50%
+							transform: translateY(-50%)
+
+
+
+			& > div
+				display: flex
+				justify-content: space-between
+
+				& > span
+					display: flex
+					gap: .5rem
+					align-items: center
+
+			.tags
+				margin: 0 0 .25rem
+
+				span small
+					display: none
+			del
+				font-weight: 600
+				line-height: 1.5rem
+
+			small
+				text-transform: uppercase
+				font-size: 0.75rem
+				font-weight: 700
+				line-height: 1.25rem
+				padding: 0 .25rem
+				border: solid 1px rgba(lightgrey, 50%)
+				border-radius: .25rem
+				display: block
+				background-color: var(--neutral_0)
+				display: flex
+				align-items: center
+				gap: .25rem
+
+			mark
+				display: none
+
+			.price
+				strong
+					font-size: clamp(1rem, 2.5vw, 2.5rem)
+					font-weight: 700
+					line-height: 2.5rem
+
+				em
+					font-size: 0.85rem
+					font-weight: 800
+					padding: 0 .15rem
+					border: solid 1px $theme
+					border-radius: .25rem
+					line-height: 1.25rem
+
+		.variants
+			padding: 1.25rem 0
+			border-top: solid 1px rgba(lightgrey, .5)
+			margin-top: .75rem
+			// Selected
+			ul
+				display: flex
+				gap: .2rem
+				flex-wrap: wrap
+				margin-bottom: 1rem
+				li
+					background-color: $theme
+					border-radius: .25rem
+					font-size: 1rem
+					line-height: 1.5rem
+					padding: 0 .35rem
+					color: var(--contrast)
+			// Variant
+			dl
+				margin-bottom: 1rem
+				display: flex
+				gap: .5rem
+				flex-wrap: wrap
+				dt
+					flex: 0 0 100%
+					font-size: .85rem
+					line-height: 1rem
+					font-weight: 800
+					text-transform: uppercase
+				&[data-type="thumbs"] dd
+					width: 4.5rem
+					height: 4.5rem
+					border-radius: .5rem
+					box-sizing: border-box
+					border: solid 1px rgba(lightgrey, .5)
+					overflow: hidden
+
+					img
+						width: 100%
+						height: 100%
+						object-fit: cover
+						object-position: center
+						cursor: pointer
+
+				&[data-type="chips"] dd
+					font-size: .85rem
+					line-height: 2rem
+					font-weight: 800
+					border-radius: .5rem
+					border: solid 1px rgba(lightgrey, .5)
+					padding: 0 .5rem
+					cursor: pointer
+
+				.selected
+					outline: solid .25rem $theme
+					&:hover
+						border-color: rgba(lightgrey, .5)
+				[disabled]
+					background-color: rgba(lightgrey, .2)
+					color: grey
+					cursor: default !important
+					text-decoration: line-through
+					&:hover
+						border-color: rgba(lightgrey, .5)
+				dd:hover
+					border-color: $theme
+
+		.quantity
+			display: flex
+			align-items: center
+			gap: 1rem
+
+			& > span
+				background-color: rgba(lightgray, .3)
+				border-radius: .5rem
+				display: flex
+				align-items: center
+				gap: .15rem
+
+			button
+				width: 2.5rem
+				height: 2rem
+				display: flex
+				align-items: center
+				justify-content: center
+				background-color: transparent
+				border: 0
+				cursor: pointer
+
+				i
+					flex: 0 0 1.5rem
+					height: 1.5rem
+					background-color: var(--text-color)
+					mask-size: contain
+				&:first-of-type i
+					mask-image: url("/img/icons/minus.svg")
+				&:nth-of-type(2) i
+					mask-image: url("/img/icons/plus2.svg")
+
+				&:hover i
+					transform: scale(1.3)
+				&:active i
+					transform: scale(1)
+
+			input
+				width: 4rem
+				height: 1.75rem
+				box-sizing: border-box
+				border: solid 2px $theme
+				border-radius: .5rem
+				text-align: center
+				font-size: 1rem
+				font-weight: 900
+				background-color: var(--neutral_0)
+				color: var(--text-color)
+
+				&:focus
+					outline: solid 1px $theme
+
+		.cta
+			display: flex
+			gap: .75rem
+			margin-top: 1.25rem
+
+			button
+				align-self: flex-end
+				flex: 1
+				height: 3rem
+				box-sizing: border-box
+				border: solid 2px rgba(grey, .5)
+				border-radius: .5rem
+				background-color: transparent
+				font-size: 0.875rem
+				font-weight: 800
+				text-transform: uppercase
+				cursor: pointer
+				color: var(--text-color)
+				// transition: border-color .2s $ease
+
+				&:hover
+					// background-color: rgba(grey, 10%)
+					border-color: $theme
+					transform: scale(1.05)
+
+			.add-to-cart
+				flex: 0 0 5.5rem
+				display: flex
+				align-items: center
+				justify-content: center
+
+				i
+					mask-size: contain
+					background-color: var(--text-color)
+				i:first-of-type
+					flex: 0 0 1.5rem
+					height: 1.5rem
+					mask-image: url("/img/icons/plus.svg")
+				i:last-of-type
+					flex: 0 0 1.75rem
+					height: 1.75rem
+					mask-image: url("/img/icons/shopping-bag.svg")
+
+				&:hover i:last-of-type
+					transform: scale(1.15)
+
+		.cep
+			margin-top: 2.5rem
+
+			label
+				display: flex
+				align-items: center
+				gap: .75rem
+
+				.delivery-tag
+					text-transform: uppercase
+					font-size: 0.75rem
+					font-weight: 700
+					line-height: 1.25rem
+					padding: 0 .25rem
+					border: solid 1px rgba(lightgrey, 50%)
+					border-radius: .25rem
+					display: block
+					background-color: var(--neutral_0)
+					display: flex
+					align-items: center
+					gap: .25rem
+
+					i
+						flex: 0 0 1rem
+						height: 1rem
+						background-color: var(--text-color)
+						mask-image: url("/img/icons/icon-delivery-truck.svg")
+						mask-size: contain
+
+				span
+					font-size: .7rem
+					font-weight: 600
+					text-transform: uppercase
+
+			& > div
+				padding: .75rem 0
+				display: flex
+				align-items: center
+				justify-content: flex-start
+				gap: 1.25rem
+				border-bottom: solid 1px rgba(lightgrey, .5)
+				margin-bottom: .75rem
+
+				input
+					// flex: 1
+					width: 200px
+					height: 2.5rem
+					background-color: transparent
+					color: var(--text-color)
+					font-size: 1.75rem
+					line-height: 2.5rem
+					font-weight: 700
+					border: 0
+					border-radius: .5rem
+					&:placeholder-shown
+						color: rgba(lightgrey, .5)
+					&:focus
+						outline: none
+					// &:not(:placeholder-shown)
+					// 	color: red
+					// &:placeholder-shown:focus
+					// 	color: red
+
+				.aim
+					flex: 0 0 2.5rem
+					height: 2.5rem
+					background-color: rgba(lightgrey, .3)
+					border-radius: .5rem
+					display: flex
+					align-items: center
+					justify-content: center
+					border: 0
+					cursor: pointer
+
+					&:hover
+						background-color: rgba(lightgrey, .5)
+
+					i
+						flex: 0 0 1.25rem
+						height: 1.25rem
+						background-color: var(--text-color)
+						mask-image: url("/img/icons/aim.svg")
+						mask-size: contain
+
+			footer
+				display: flex
+				align-items: center
+				gap: .5rem
+				font-size: .8rem
+				font-weight: 400
+				line-height: 1rem
+
+				i
+					flex: 0 0 .75rem
+					height: .75rem
+					background-color: var(--text-color)
+					mask-image: url("/img/icons/location.svg")
+					mask-size: contain
+
+		.delivery
+			background-color: rgba(lightgrey, .5)
+			border-radius: .75rem
+			padding: .25rem
+			display: flex
+			flex-direction: column
+			gap: .25rem
+			margin: 1.25rem 0
+
+			label
+				display: flex
+				align-items: center
+				height: 3rem
+				padding: 0 1rem 0 3rem
+				border: solid 1px rgba(lightgrey, .75)
+				border-radius: .65rem
+				border: solid 1px rgba(lightgrey, .75)
+				background-color: var(--neutral_0)
+				font-size: .85rem
+				line-height: 1rem
+				position: relative
+				cursor: pointer
+				&::before
+					content: ''
+					width: 1rem
+					height: 1rem
+					border-radius: 100%
+					border: solid .15rem var(--text-color)
+					position: absolute
+					top: 50%
+					left: 1rem
+					transform: translateY(-50%)
+				&::after
+					content: ''
+					width: .6rem
+					height: .6rem
+					border-radius: 100%
+					background-color: var(--text-color)
+					position: absolute
+					top: 50%
+					left: 1.33rem
+					transform: translateY(-50%)
+					opacity: 0
+					transition: opacity .3s
+				span
+					flex: 1
+				em
+					display: block
+					font-weight: 800
+				dfn
+					font-style: normal
+			input
+				display: none
+				&:checked + label
+					border: solid 1px var(--text-color)
+					&::after
+						opacity: 1
+
+	.close
+		width: 2.5rem
+		height: 2.5rem
+		position: absolute
+		top: -.75rem
+		right: -.75rem
+		z-index: 2
+		display: flex
+		justify-content: center
+		align-items: center
+		background-color: var(--bg-lightgrey)
+		border-radius: .5rem
+		border: 0
+		cursor: pointer
+		&:hover i
+			transform: scale(1.15)
+		i
+			flex: 0 0 1.5rem
+			height: 1.5rem
+			background-color: var(--text-color)
+			mask-image: url("/img/icons/close.svg")
+			mask-size: contain
+
+
+@include base.for-size(phone)
+	.product-details
+		& > div
+			flex-direction: column
+			overflow-y: auto
+			overflow-x: hidden
+			position: relative
+			padding-top: calc(45vw + .75rem)
+		aside
+			height: auto
+			overflow-y: hidden
+			order: 2
+			flex: 0 0 auto
+			.img-gallery
+				position: fixed
+				width: calc(100% - 1.5rem)
+				top: 0
+				left: 0
+				z-index: 2
+				border:
+					style: solid
+					width: .75rem .75rem .25rem .75rem
+					color: var(--bg-lightgrey)
+					radius: 1.25rem 1.25rem 0 0
+				ul
+					height: 45vw
+					flex-wrap: nowrap
+					overflow-x: auto
+					li
+						flex: 0 0 45vw
+				.gallery-expand-bt
+					display: none
+			dl
+				height: auto
+				padding: 2.5rem 1.25rem 5rem
+
+		form
+			height: auto
+			flex: 0 0 auto
+			padding: 1.25rem 1.5rem
+			.infos
+				.price
+					strong
+						font-size: 7vw
+			.cta
+				position: fixed
+				bottom: 0
+				left: 0
+				z-index: 2
+				background-color: white
+				width: calc(100% - 1.5rem)
+				border:
+					style: solid
+					width: .25rem .75rem .75rem .75rem
+					color: var(--bg-lightgrey)
+					radius: 0 0 1.25rem 1.25rem
+
+
+
+		.close
+			z-index: 3
+			position: fixed

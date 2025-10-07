@@ -1,0 +1,103 @@
+@use "variables" as *
+@use "base"
+
+.banner
+	figure
+		width: 100%
+		background-color: rgba(grey, 20%)
+		border: solid 1px rgba(grey, 20%)
+		border-radius: .375rem
+		overflow: hidden
+		position: relative
+		box-sizing: border-box
+
+		&[data-gradient="true"]
+			&::before
+				content: ''
+				width: 100%
+				height: 80%
+				background: rgba(0, 0, 0, 6.35)
+				background: linear-gradient(0deg,rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 100%)
+				position: absolute
+				bottom: 0
+				left: 0
+
+	img
+		width: 100%
+		height: 100%
+		object-fit: cover
+		object-position: center
+
+	figcaption
+		padding: .75rem 2rem
+		position: absolute
+		bottom: clamp(1.5rem, 3.5vw, 3.5rem)
+		left: 0
+		font-size: clamp(1rem, 3.5vw, 2.5rem)
+		font-weight: 900
+		text-transform: uppercase
+		color: var(--contrast)
+		z-index: 2
+
+
+.banner-container
+	padding: $y-gap-sm 0
+
+	[data-order="1"]
+		order: 1
+	[data-order="2"]
+		order: 2
+
+	// Full banners
+	&.full
+		figure
+			height: 48vw
+			max-height: 40rem
+
+	// Half banners
+	&.half
+		display: flex
+		gap: .75rem
+		.banner
+			flex: 1
+		figure
+			height: 38vw
+			max-height: 30rem
+
+	// Banner + Product 
+	&.product-highlight
+		display: flex
+		gap: .75rem
+		.banner
+			flex: 1
+			figure
+				height: 38vw
+				max-height: 36rem
+		.product-card
+			flex: 0 0 30%
+			height: 38vw
+			max-height: 36rem
+
+
+@include base.for-size(phone)
+	.banner-container
+
+		&.half
+			flex-direction: column
+			flex-wrap: wrap
+			figure
+				height: 75vw
+
+		&.product-highlight
+			flex-direction: column
+			flex-wrap: wrap
+			.banner
+				figure
+					height: 75vw
+			.product-card
+				flex: 0 0 100%
+			& > a
+				order: 1 !important
+			article
+				order: 2 !important
+

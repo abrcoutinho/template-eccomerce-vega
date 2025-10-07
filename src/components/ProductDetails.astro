@@ -1,0 +1,143 @@
+---
+const { title, sub1, sub2, price, delPrice, installmentsNumber, installmentsValue } = Astro.props;
+---
+<article class="product-details" id="product-details">
+	<div>
+
+		<aside>
+			<!-- Img gallery -->
+			<div class="img-gallery">
+				<ul>
+					<li><img src="/img/products/button1.png" alt="" /></li>
+					<li><img src="/img/products/button2.jpg" alt="" /></li>
+					<li><img src="/img/products/button3.jpg" alt="" /></li>
+					<li><img src="/img/products/button4.jpg" alt="" /></li>
+				</ul>
+				<button class="gallery-expand-bt" title="Expandir"><i></i></button>
+			</div>
+			<!-- Accordions -->
+			<dl>
+				<!-- Item -->
+				<dt>Detalhes do produto<i></i></dt>
+				<dd>...</dd>
+				<!-- Item -->
+				<dt>Caracteríscticas<i></i></dt>
+				<dd>...</dd>
+				<!-- Item -->
+				<dt>Cuidados com a peça<i></i></dt>
+				<dd>...</dd>
+				<!-- Item -->
+				<dt>Avaliações<i></i></dt>
+				<dd>...</dd>
+			</dl>
+		</aside>
+
+		<form>
+			<header>
+				<button type="button" title="Compartilhar" class="share-bt"><i></i></button>
+				<small title="Avaliações"><u>135</u><i></i></small>
+			</header>
+			<!-- Infos -->
+			<fieldset class="infos">
+				<h3>{title}</h3>
+				<h4>
+					<em>{sub1}</em>
+					<span><i></i>{sub2}</span>
+				</h4>
+				<!-- Tags -->
+				<div class="tags">
+					<span>
+						<small>A partir de</small>
+						<del>R$ {delPrice}</del>
+						<mark>-0%</mark>
+					</span>
+					<small>-10% no Pix</small>
+				</div>
+				<!-- Preço -->
+				<div class="price">
+					<strong>R$ {price}</strong>
+					<span>
+						<em>{installmentsNumber}x</em>
+						R$ {installmentsValue}
+					</span>
+				</div>
+			</fieldset>
+			<!-- Variants -->
+			<fieldset class="variants">
+				<!-- Selected -->
+				<ul>
+					<li>Black colors</li>
+					<li>2.25"</li>
+				</ul>
+				<!-- Variant -->
+				<dl data-type="thumbs">
+					<dt>Cor</dt>
+					<dd><img src="/img/products/button2.jpg" alt="" /></dd>
+					<dd class="selected"><img src="/img/products/button2.jpg" alt="" /></dd>
+				</dl>
+				<!-- Variant -->
+				<dl data-type="chips">
+					<dt>Tamanho</dt>
+					<dd>1.25"</dd>
+					<dd class="selected">2.25"</dd>
+					<dd disabled>3.25"</dd>
+					<dd>4.25"</dd>				
+				</dl>
+			</fieldset>
+			<!-- Quantity -->
+			<fieldset class="quantity">
+				<span>
+					<button type="button" title="Menos"><i></i></button>
+					<input type="text" name="" value="1" />
+					<button type="button" title="Mais"><i></i></button>
+				</span>
+				<small>12 disponíveis</small>
+			</fieldset>
+			<!-- Add to cart buttons -->
+			<fieldset class="cta">
+				<button title="Compre agora">Compre agora</button>
+				<button class="add-to-cart" title="Adicionar"><i></i><i></i></button>
+			</fieldset>
+			<!-- CEP -->
+			<fieldset class="cep">
+				<label>
+					<small class="delivery-tag"><i></i>Frete grátis</small>
+					<span>Digite o CEP:</span>
+				</label>
+				<div>
+					<input type="text" name="" placeholder="00.000-000" />
+					<button type="button" title="Pesquisar CEP" class="aim"><i></i></button>
+					<!-- <button type="button">Não sei meu CEP</button> -->
+				</div>
+				<footer><i></i>Av. Paulista, Bela Vista, São Paulo</footer>
+			</fieldset>
+			<!-- Delivery options -->
+			<fieldset class="delivery">
+				<!-- option -->
+				<div>
+					<input type="radio" name="" value="" id="delivery-free" checked="checked" />
+					<label for="delivery-free">
+						<span>
+							<em>Gráts</em>
+							<dfn>Convencional</dfn>
+						</span>
+						<small>Até 6 dias úteis</small>
+					</label>
+				</div>
+				<!-- option -->
+				<div>
+					<input type="radio" name="" value="" id="delivery-express" />
+					<label for="delivery-express">
+						<span>
+							<em>R$ 49,80</em>
+							<dfn>Expressa</dfn>
+						</span>
+						<small>Até 2 dias úteis</small>
+					</label>
+				</div>
+			</fieldset>
+		</form>
+
+		<button class="close" id="closeProdDetBtn" title="Fechar"><i></i></button>
+	</div>
+</article>

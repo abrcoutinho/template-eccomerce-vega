@@ -1,0 +1,76 @@
+@use "variables" as *
+@use "base"
+
+.showcase
+	padding: $y-gap-sm 0
+
+	hgroup
+		a
+			color: var(--text-color)
+			display: flex
+			align-items: center
+			justify-content: space-between
+			padding: 0 clamp(0.5rem, 1.5vw, 2rem)
+			margin-bottom: 0.375rem
+
+			&:hover
+				opacity: .7
+				text-decoration: underline
+				i
+					transform: translateX(.25rem)
+
+			i
+				flex: 0 0 1.5rem
+				height: 1.5rem
+				background-color: var(--text-color)
+				mask-image: url("/img/icons/foward.svg")
+				mask-size: contain
+				transition: transform .3s $ease
+
+		h2
+			font-size: 0.9rem
+			line-height: 2.5rem
+			text-transform: uppercase
+
+	.cards-container
+		display: flex
+		gap: .75rem
+
+	.product-card
+		flex: 1
+
+	[data-order="1"]
+		order: 1
+	[data-order="2"]
+		order: 2
+	[data-order="3"]
+		order: 3
+	[data-order="4"]
+		order: 4
+
+
+@include base.for-size(phone)
+	.showcase
+		.cards-container
+			flex-wrap: wrap
+			gap: .5rem
+
+		.product-card
+			flex: 1 0 48%
+			height: 28rem
+			min-width: initial
+			max-width: initial
+
+			.infos
+				.tags
+					margin-bottom: .2rem
+					& > small:last-of-type
+						display: none
+				.price
+					span
+						display: none
+					strong
+						font-size: 5.5vw
+				footer
+					.add-to-cart
+						display: none

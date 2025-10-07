@@ -1,0 +1,35 @@
+---
+const { href, src, title, alt, price, installmentsNumber, installmentsValue, order } = Astro.props;
+---
+<article class="product-card" data-order={order}>
+	<a href={href} title={title} class="open-product-details">
+		<figure>
+			<img src={src} alt={alt} />
+		</figure>
+	</a>
+	<div class="infos">
+		<h3>{title}</h3>
+		<!-- Tags -->
+		<div class="tags">
+			<small class="delivery-tag"><i></i>Frete grátis</small>
+			<span>
+				<small>A partir de</small>
+				<del>R$ 0,00</del>
+				<mark>-0%</mark>
+			</span>
+			<small>-10% no Pix</small>
+		</div>
+		<!-- Preço -->
+		<div class="price">
+			<strong>R$ {price}</strong>
+			<span>
+				<em>{installmentsNumber}x</em>
+				R$ {installmentsValue}
+			</span>
+		</div>
+		<footer>
+			<button title="Compre agora" class="open-product-details">Compre agora</button>
+			<button class="add-to-cart" title="Adicionar"><i></i><i></i></button>
+		</footer>
+	</div>
+</article>
