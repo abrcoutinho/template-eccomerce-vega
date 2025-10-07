@@ -1,9 +1,11 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+// import staticAdapter from '@astrojs/adapter-static';
 
 // https://astro.build/config
 export default defineConfig({
-	base: '/template-eccomerce-vega/',
-	site: 'https://abrcoutinho.github.io/template-eccomerce-vega/',
-	output: 'static',
+	// adapter: staticAdapter(),
+	base: '/template-eccomerce-vega',
+	site: 'https://abrcoutinho.github.io/template-eccomerce-vega',
 });
+
