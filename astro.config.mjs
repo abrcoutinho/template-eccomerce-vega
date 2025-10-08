@@ -5,7 +5,7 @@ import { defineConfig } from 'astro/config';
 // https://astro.build/config
 export default defineConfig({
 	// adapter: staticAdapter(),
-	base: '/template-eccomerce-vega',
-	site: 'https://abrcoutinho.github.io/template-eccomerce-vega',
+	base: '/template-ecommerce-vega',
+	site: 'https://abrcoutinho.github.io/template-ecommerce-vega',
 });
 
