@@ -646,12 +646,10 @@
 			mask-size: contain
 
 
-@include base.for-size(phone)
+@include base.for-size(tablet_lg)
 	.product-details
+		height: 85vh
 		border: solid 2px red
-		*
-			display: none !important
-
 		& > div
 			flex-direction: column
 			overflow-y: auto
