@@ -53,19 +53,24 @@
 	.showcase
 		.cards-container
 			flex-wrap: wrap
-			gap: .5rem
+			gap: .25rem
 
 		.product-card
 			flex: 1 0 48%
-			height: 28rem
+			height: 26rem
 			min-width: initial
 			max-width: initial
 
 			.infos
+				flex: 0 0 12rem
+				padding: 1.25rem .75rem .75rem
+				
 				.tags
 					margin-bottom: .2rem
 					& > small:last-of-type
 						display: none
+				.delivery-tag
+					left: .75rem
 				h3
 					font-size: 1.2rem
 					line-height: 1.5rem
@@ -75,5 +80,7 @@
 					strong
 						font-size: 5.5vw
 				footer
+					button
+						height: 2rem
 					.add-to-cart
 						display: none

@@ -18,16 +18,16 @@
 		visibility: visible
 
 	// background mask
-	// &::before
-	// 	content: ''
-	// 	width: 100vw
-	// 	height: 100dvh
-	// 	background-color: rgba(0, 0, 0, 0.4)
-	// 	position: absolute
-	// 	top: 50%
-	// 	left: 50%
-	// 	transform: translate(-50%, -50%)
-	// 	z-index: -1
+	&::before
+		content: ''
+		width: 100vw
+		height: 100dvh
+		background-color: rgba(0, 0, 0, 0.4)
+		position: absolute
+		top: 50%
+		left: 50%
+		transform: translate(-50%, -50%)
+		z-index: -1
 
 	& > div
 		height: 100%
@@ -657,14 +657,27 @@
 
 
 
-@include base.for-size(tablet_lg)
+@include base.for-size(phone)
 	.product-details
+		width: 100vw
+		height: 84dvh
+		top: initial
+		bottom: 0
+		transform: translate(-50%, 0)
+		border-radius: 0.75rem 0.75rem 0 0
+
+		&::before
+			height: 20dvh
+			top: -16dvh
+			left: 0
+			transform: initial
+
 		& > div
 			flex-direction: column
 			overflow-y: auto
 			overflow-x: hidden
 			position: relative
-			padding-top: calc(45vw + .75rem)
+			padding-top: calc(36vw + .75rem)
 		aside
 			height: auto
 			overflow-y: hidden
@@ -682,11 +695,11 @@
 					color: var(--bg-lightgrey)
 					radius: 1.25rem 1.25rem 0 0
 				ul
-					height: 45vw
+					height: 36vw
 					flex-wrap: nowrap
 					overflow-x: auto
 					li
-						flex: 0 0 45vw
+						flex: 0 0 36vw
 				.gallery-expand-bt
 					display: none
 			dl
@@ -698,6 +711,8 @@
 			flex: 0 0 auto
 			padding: 1.25rem 1.5rem
 			.infos
+				h3
+					font-size: 8vw
 				.price
 					strong
 						font-size: 7vw
@@ -717,5 +732,6 @@
 
 
 		.close
-			z-index: 3
-			position: fixed
+			display: none
+			// z-index: 3
+			// position: fixed
