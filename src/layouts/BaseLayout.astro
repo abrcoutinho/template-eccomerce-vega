@@ -32,7 +32,7 @@ const { lang, title, description } = Astro.props;
 			installmentsNumber="2"
 			installmentsValue="13,72"
 		/>
-		<script type="module" is:client src={`${import.meta.env.BASE_URL}src/scripts/smooth-scroll.js`}></script>
-		<script type="module" is:client src={`${import.meta.env.BASE_URL}src/scripts/scripts.js`}></script>
+		<script type="text/javascript" src={`${import.meta.env.BASE_URL}/src/scripts/smooth-scroll.js`} is:client></script>
+		<script type="text/javascript" src={`${import.meta.env.BASE_URL}/src/scripts/scripts.js`} is:client></script>
 	</body>
 </html>
