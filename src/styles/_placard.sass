@@ -5,7 +5,7 @@
 
 	& > div
 		height: 2.5rem
-		background-color: rgba(gray, .3)
+		background-color: rgba(gray, .2)
 		border-radius: .5rem
 		display: flex
 		align-items: center
@@ -63,12 +63,14 @@
 
 @include base.for-size(phone)
 	.placard
+		& > div
+			height: 2rem
 		button
 			display: none
 		ul
 			width: 100%
 		li
-			font-size: .8rem
+			font-size: .7rem
 			box-sizing: border-box
 			padding: 0 .5rem
 
