@@ -15,7 +15,7 @@
 	align-items: center
 	margin-bottom: $y-gap-sm
 	z-index: 10
-	transition: max-height .5s $ease
+	transition: max-height .1s
 
 	// top bar pseudo element
 	&::before
@@ -31,14 +31,17 @@
 		transform: translateX(-50%)
 		z-index: -1
 		box-shadow: 0 0 10px rgba(black, 40%)
-		transition: padding-bottom .5s $ease
+		transition: padding-bottom .1s
 
 	&.scrolled
 		max-height: 3.5rem
+		transition: max-height 1.5s $ease
 		&::before
 			padding-bottom: 3.5rem
+			transition: padding-bottom 1.5s $ease
 		.logo img
 			max-height: 3.3rem
+			transition: max-height 1.5s $ease
 
 	&::after
 		@extend %triangle
@@ -108,7 +111,7 @@
 			max-height: 4.3rem
 			object-fit: contain
 			object-position: left
-			transition: max-height .5s $ease
+			transition: max-height .5s
 
 	.search-button
 		flex: 0 0 3rem

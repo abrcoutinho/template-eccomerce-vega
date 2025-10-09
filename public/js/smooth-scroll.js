@@ -13,16 +13,15 @@
 
 
 
-// Momentum
+// Momentum scroll (desk only)
 if (!/Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-	// Executa o script apenas em desktops
 	const storeApp = document.getElementById('smooth-wrapper');
 	const storeContent = document.getElementById('smooth-content');
 
 	let sx = 0, // For scroll positions
-			sy = 0;
+		sy = 0;
 	let dx = sx, // For container positions
-			dy = sy;
+		dy = sy;
 
 	storeApp.style.height = storeContent.clientHeight + 'px';
 
@@ -49,8 +48,7 @@ if (!/Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 		dy = Math.floor(dy * 100) / 100;
 		
 		storeContent.style.transform = `translate3d(-${dx}px, -${dy}px, 0px)`;
-	 
-		window.requestAnimationFrame(render);
+	 	window.requestAnimationFrame(render);
 	}
 
 	function li(a, b, n) {

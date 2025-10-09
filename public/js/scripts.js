@@ -12,33 +12,31 @@ function isScrolledDesk(e) {
 	  topbar.classList.remove("scrolled");
 	}
 }
-window.addEventListener('scroll', isScrolledDesk);
-
 
 // Scroll event mob
 function isScrolledMob() {
-    const container = document.getElementById('smooth-wrapper');
-    const topbar = document.getElementById("topbar");
-    const overflowY = window.getComputedStyle(container).overflowY;
+	const mobScrollContainer = document.getElementById('smooth-wrapper');
+	const topbar = document.getElementById("topbar");
+	const overflowY = window.getComputedStyle(mobScrollContainer).overflowY;
 
-    if (overflowY === 'auto' && container.scrollTop > 0) {
-        topbar.classList.add('scrolled');
-    } else {
-        topbar.classList.remove('scrolled');
-    }
+	if (overflowY === 'auto' && mobScrollContainer.scrollTop > 0) {
+		topbar.classList.add('scrolled');
+	} else {
+		topbar.classList.remove('scrolled');
+	}
 }
-// window.addEventListener('scroll', isScrolledMob);
 
 document.addEventListener('DOMContentLoaded', () => {
-    const container = document.getElementById('smooth-wrapper');
-    isScrolledMob();
-    container.addEventListener('scroll', isScrolledMob);
-});
+	isScrolledDesk();
+	isScrolledMob();
+	const mobScrollContainer = document.getElementById('smooth-wrapper');
+	['scroll','resize'].forEach( function(evt) {
+		window.addEventListener('evt', isScrolledDesk, false);
+		mobScrollContainer.addEventListener('evt', isScrolledMob, false);
+	});
 
 
-
-// Product details call
-document.addEventListener('DOMContentLoaded', function() {
+	// Product details call
 	const openProductDetails = document.querySelectorAll('.open-product-details');
 	const prodDetailsPopup = document.getElementById('product-details');
 	const closeProdDetBtn = document.getElementById('closeProdDetBtn');
@@ -61,9 +59,8 @@ document.addEventListener('DOMContentLoaded', function() {
 			prodDetailsPopup.classList.remove('active');
 		}
 	});
+
+
 });
-
-
-
 
 
