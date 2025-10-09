@@ -1,56 +1,66 @@
-// Scroll event
-function isScrolled(e) {
-  const topbar = document.getElementById("topbar");
-  const scrolledDown = document.body.scrollTop > 1 || document.documentElement.scrollTop > 1;
 
-  if (scrolledDown) {
-    topbar.classList.add("scrolled");
-  }
 
-  if(!scrolledDown) {
-    topbar.classList.remove("scrolled");
-  }
+// Scroll event desk
+function isScrolledDesk(e) {
+	const topbar = document.getElementById("topbar");
+	const scrolledDown = document.body.scrollTop > 0 || document.documentElement.scrollTop > 0;
+
+	if (scrolledDown) {
+	  topbar.classList.add("scrolled");
+	}
+	if(!scrolledDown) {
+	  topbar.classList.remove("scrolled");
+	}
 }
-window.addEventListener('scroll', isScrolled);
+window.addEventListener('scroll', isScrolledDesk);
 
 
-// Show/hide navbar
-// var prevScrollpos = window.pageYOffset;
-// window.onscroll = function() {
-//   var currentScrollPos = window.pageYOffset;
-//   if (prevScrollpos > currentScrollPos) {
-//     navbar.style.top = "0";
-//   } else {
-//     navbar.style.top = "-220px";
-//   }
-//   prevScrollpos = currentScrollPos;
-// }
+// Scroll event mob
+function isScrolledMob() {
+    const container = document.getElementById('smooth-wrapper');
+    const topbar = document.getElementById("topbar");
+    const overflowY = window.getComputedStyle(container).overflowY;
+
+    if (overflowY === 'auto' && container.scrollTop > 0) {
+        topbar.classList.add('scrolled');
+    } else {
+        topbar.classList.remove('scrolled');
+    }
+}
+// window.addEventListener('scroll', isScrolledMob);
+
+document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('smooth-wrapper');
+    isScrolledMob();
+    container.addEventListener('scroll', isScrolledMob);
+});
+
 
 
 // Product details call
 document.addEventListener('DOMContentLoaded', function() {
-  const openProductDetails = document.querySelectorAll('.open-product-details');
-  const prodDetailsPopup = document.getElementById('product-details');
-  const closeProdDetBtn = document.getElementById('closeProdDetBtn');
+	const openProductDetails = document.querySelectorAll('.open-product-details');
+	const prodDetailsPopup = document.getElementById('product-details');
+	const closeProdDetBtn = document.getElementById('closeProdDetBtn');
 
-  openProductDetails.forEach(button => {
-    button.addEventListener('click', function() {
-      if (button.id !== 'closeProdDetBtn') {
-        prodDetailsPopup.classList.add("active");
-      }
-    });
-  });
+	openProductDetails.forEach(button => {
+		button.addEventListener('click', function() {
+			if (button.id !== 'closeProdDetBtn') {
+				prodDetailsPopup.classList.add("active");
+			}
+		});
+	});
 
-  closeProdDetBtn.addEventListener('click', function() {
-    prodDetailsPopup.classList.remove('active');
-  });
+	closeProdDetBtn.addEventListener('click', function() {
+		prodDetailsPopup.classList.remove('active');
+	});
 
-  // Close when clicking outside
-  prodDetailsPopup.addEventListener('click', function(event) {
-    if (event.target === prodDetailsPopup) {
-      prodDetailsPopup.classList.remove('active');
-    }
-  });
+	// Close when clicking outside
+	prodDetailsPopup.addEventListener('click', function(event) {
+		if (event.target === prodDetailsPopup) {
+			prodDetailsPopup.classList.remove('active');
+		}
+	});
 });
 
 
