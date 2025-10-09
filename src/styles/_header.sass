@@ -38,7 +38,7 @@
 		&::before
 			padding-bottom: 3.5rem
 		.logo img
-			max-height: 3.5rem
+			max-height: 3.3rem
 
 	&::after
 		@extend %triangle
@@ -105,7 +105,7 @@
 		// 	height: 4.5rem
 		img
 			width: 100%
-			max-height: 4.5rem
+			max-height: 4.3rem
 			object-fit: contain
 			object-position: left
 			transition: max-height .5s $ease
@@ -152,6 +152,13 @@
 
 @include base.for-size(phone)
 	.store-header
+		&.scrolled
+			max-height: 3rem
+			&::before
+				padding-bottom: 3rem
+			.logo img
+				max-height: 2.8rem
+
 		.menu-button
 			flex: 0 0 2rem
 
