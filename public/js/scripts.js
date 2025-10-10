@@ -1,25 +1,33 @@
 
 
 // Scroll event desk
-function isScrolledDesk(e) {
-	const topbar = document.getElementById("topbar");
-	const scrolledDown = document.body.scrollTop > 0 || document.documentElement.scrollTop > 0;
+window.addEventListener('scroll', function () {
+	const topbar = document.getElementById('topbar');
+	const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
 
-	if (scrolledDown) {
-	  topbar.classList.add("scrolled");
+	if (scrollTop > 0) {
+		topbar.classList.add('scrolled');
+	} else {
+		topbar.classList.remove('scrolled');
 	}
-	if(!scrolledDown) {
-	  topbar.classList.remove("scrolled");
-	}
-}
+});
+
 
 // Scroll event mob
 function isScrolledMob() {
-	const mobScrollContainer = document.getElementById('smooth-wrapper');
-	const topbar = document.getElementById("topbar");
-	const overflowY = window.getComputedStyle(mobScrollContainer).overflowY;
+	const container = document.getElementById('smooth-wrapper');
+	const topbar = document.getElementById('topbar');
 
-	if (overflowY === 'auto' && mobScrollContainer.scrollTop > 0) {
+	if (!container || !topbar) return;
+
+	const estilo = window.getComputedStyle(container);
+	const overflowY = estilo.getPropertyValue('overflow-y');
+	const scrollTop = container.scrollTop;
+
+	const temScroll = scrollTop > 0;
+	const overflowYAuto = overflowY === 'auto';
+
+	if (temScroll && overflowYAuto) {
 		topbar.classList.add('scrolled');
 	} else {
 		topbar.classList.remove('scrolled');
@@ -27,13 +35,12 @@ function isScrolledMob() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-	isScrolledDesk();
 	isScrolledMob();
-	const mobScrollContainer = document.getElementById('smooth-wrapper');
-	['scroll','resize'].forEach( function(evt) {
-		window.addEventListener('evt', isScrolledDesk, false);
-		mobScrollContainer.addEventListener('evt', isScrolledMob, false);
-	});
+	const container = document.getElementById('smooth-wrapper');
+	if (container) {
+		container.addEventListener('scroll', isScrolledMob);
+	}
+
 
 
 	// Product details call
@@ -62,5 +69,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 });
-
-
