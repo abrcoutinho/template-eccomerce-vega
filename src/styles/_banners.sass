@@ -82,6 +82,21 @@
 			max-height: 36rem
 
 
+
+@include base.for-size(tablet_lg)
+	.banner-container
+		&.product-highlight
+			overflow-x: auto
+			.banner
+				flex: 0 0 90%
+				figure
+					height: 60vw
+			.product-card
+				flex: 0 0 18rem
+				height: 60vw
+
+
+
 @include base.for-size(phone)
 	.banner-container
 

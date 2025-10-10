@@ -146,6 +146,16 @@
 	// 	figure
 	// 		display: block
 
+@include base.for-size(tablet_md)
+	.store-footer
+		.contact
+			flex-wrap: wrap
+			.social
+				flex: 0 0 100%
+				order: 3
+				justify-content: center
+				padding-top: 1.5rem
+
 
 
 
@@ -154,11 +164,15 @@
 		.contact
 			flex-direction: column
 			gap: 2rem
+			flex-wrap: no-wrap
 			address
 				text-align: center
 				&:first-of-type
 					i
 						margin: 0 auto
+			.social
+				padding-top: 0
+				order: 2
 		& > div:last-of-type
 			flex-direction: column
 			gap: 2rem
