@@ -659,21 +659,54 @@
 
 
 
-@include base.for-size(phone)
+
+@include base.for-size(tablet_lg)
 	.product-details
 		width: 100vw
 		height: 84dvh
 		top: initial
 		bottom: 0
 		transform: translate(-50%, 0)
-		border-radius: 0.75rem 0.75rem 0 0
+
+		&.active
+			& > div
+				transform: initial !important
+				transition: transform .8s $ease
+			&::before
+				opacity: 1
+				transition: opacity .4s .6s
 
 		&::before
 			height: 20dvh
 			top: -16dvh
 			left: 0
 			transform: initial
+			opacity: 0
+		& > div
+			border-radius: 0.75rem 0.75rem 0 0
+			transform: translateY(105%)
 
+		form
+			flex: 0 0 50%
+
+		.close
+			display: none
+			// z-index: 3
+			// position: fixed
+
+
+
+@include base.for-size(tablet_md)
+	.product-details
+		aside
+			dl
+				padding: 2.5rem 1rem 5rem
+		form
+			padding: 1.25rem 1.5rem
+
+
+@include base.for-size(phone)
+	.product-details
 		& > div
 			flex-direction: column
 			overflow-y: auto
@@ -737,7 +770,3 @@
 					color: var(--bg-lightgrey)
 				box-shadow: -.25rem 0 .75rem rgba(0,0,0, .3)
 
-		.close
-			display: none
-			// z-index: 3
-			// position: fixed
